@@ -9,13 +9,16 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="./createButton.js"></script>
+  <script src='./markerHandler.js'></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
   <!-- Local StyleSheet -->
- 
+  <link rel="stylesheet" href="./style.css" />
   
   <!--Marker Handler Src-->
  
@@ -27,18 +30,31 @@
   <a-scene 
     embedded vr-mode-ui="enabled: false"     
     arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;debugUIEnabled: false;"
-    gesture-detector>
+    gesture-detector create-button>
 
     <!-- Camera -->
     <a-entity camera></a-entity>
 
-    
-    
+    <a-assets>
+      <a-asset-item id="pizza-model" src="./assets/pizzagltf/scene.gltf"></a-asset-item>
+    </a-assets>
+    <a-marker marker-handler id="pizza-marker" type="pattern" url="./assets/dish-markers/pattern-pizza.patt" cursor="rayOrigin:mouse">
+      <a-entity id="pizza-3d-model" position="-2 0 0" scale="0.05 0.05 0.05" gltf-model="#pizza-model" gesture-handler></a-entity>
+      <a-plane position="0 0 0" width="2" height="2" rotation="-90 0 0">
+        <a-plane position="0 0.85 0.03" width="1.8" height="0.3" rotation="0 0 0" color="red">
+          <a-entity position="0 0 0.1" rotation="0 0 0" text="font:monoid;value:pizza margherita;color:white;width:1.8;height:1;align:center;"></a-entity>
+        </a-plane>
+        <a-entity position="0 0 0.1" rotation="0 0 0" text="font:monoid;value:tomato\nmozzarella cheese\nbasil\noregano\nolive oil\nblack pepper\ntable salt;color:black;width:2;height:1;align:center;"></a-entity>
+      </a-plane>
+    </a-marker>
     
   </a-scene>
 
   <!-- Button Main Div -->
- 
+ <div id="button-div">
+   <!---->
+ </div>
+
 </body>
 
 </html>
