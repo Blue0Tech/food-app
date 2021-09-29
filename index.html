@@ -4,6 +4,29 @@
 <head>
   <title>Menu Card</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.2.2/firebase-app.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+  
+  <!-- <script type="module"> -->
+    <script>
+    // Import the functions you need from the SDKs you need
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyARdRdcHI6K5XJY0YcxEELhc2vJu5vBjsg",
+      authDomain: "marker-food-app.firebaseapp.com",
+      projectId: "marker-food-app",
+      storageBucket: "marker-food-app.appspot.com",
+      messagingSenderId: "963569074960",
+      appId: "1:963569074960:web:9d3495d2fc8c13f954db95"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -12,6 +35,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="./createButton.js"></script>
   <script src='./markerHandler.js'></script>
+  <script src="./createMarkers.js"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -30,12 +54,12 @@
   <a-scene 
     embedded vr-mode-ui="enabled: false"     
     arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;debugUIEnabled: false;"
-    gesture-detector create-button>
+    gesture-detector create-button create-markers id="main-scene">
 
     <!-- Camera -->
     <a-entity camera></a-entity>
 
-    <a-assets>
+    <!-- <a-assets>
       <a-asset-item id="pizza-model" src="./assets/pizzagltf/scene.gltf"></a-asset-item>
     </a-assets>
     <a-marker marker-handler id="pizza-marker" type="pattern" url="./assets/dish-markers/pattern-pizza.patt" cursor="rayOrigin:mouse">
@@ -46,7 +70,7 @@
         </a-plane>
         <a-entity position="0 0 0.1" rotation="0 0 0" text="font:monoid;value:tomato\nmozzarella cheese\nbasil\noregano\nolive oil\nblack pepper\ntable salt;color:black;width:2;height:1;align:center;"></a-entity>
       </a-plane>
-    </a-marker>
+    </a-marker> -->
     
   </a-scene>
 
